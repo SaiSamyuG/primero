@@ -42,9 +42,10 @@ jobs:
       - name: Server tests
         run: ./bin/run_server_tests.sh github-actions
         shell: bash
-  # Running front-end mocha test in batches. Running on single process causes test 
+  # Running front-end mocha test in batches. Running on single process causes test
   # to run out of resources. This causes a few test to randomly timeout.
   client-test-1:
+    needs: server-test
     name: Client Test (Batch 1)
     runs-on: ubuntu-latest
     steps:
